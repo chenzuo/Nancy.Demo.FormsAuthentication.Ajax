@@ -13,6 +13,7 @@ function tryLogon(event) {
         if (response.isSuccess) {
             $.cookie('_ncfa', response.authToken);
         }
+        $('#btnLogIn').hide();
         $('#StatusText').text(response.message);
     })
     .fail(function (msg) { $('#StatusText').text('Error: ' + msg.statusText); });

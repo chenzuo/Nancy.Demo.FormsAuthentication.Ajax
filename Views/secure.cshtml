@@ -1,0 +1,41 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Nancy.Demo.FormsAuthentication.Ajax</title>
+
+    <link href="~/content/bootstrap.css" rel="Stylesheet" />
+    <link href="~/content/default.min.css" rel="Stylesheet" />    
+    <link href="~/content/authdemo.css" rel="Stylesheet" />
+</head>
+<body class="home-discover">
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="containerx">
+                <a class="brand" href="/">Nancy.Demo.FormsAuthentication.Ajax</a>
+                <ul class="nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#" onclick="window.location.reload();return false;">Reload this page</a></li>
+                    <li><a href="~/secure">Try a secure page</a></li>
+                </ul>
+                <div class="pull-right"><ul class="nav"><li><a href="~/logout">Log out</a></li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="containerx bulk">
+
+        <div class="hero-unit">
+            <h2>Secure area</h2>            
+                <div id="demoBox">
+                    <p>You are logged in as <b>@Model.Username</b></p>
+                    <p><a href="~/logout">Log out</a></p>
+                </div>            
+        </div>
+    </div>
+</body>
+
+</html>

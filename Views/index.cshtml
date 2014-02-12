@@ -44,18 +44,23 @@
             <h2>Demo</h2>
             @if (Model.IsLoggedIn)
             {
-                <p>You are logged in as <b>@Model.User.Username</b></p>
-                
+                <div id="demoBox">
+                    <p>You are logged in as <b>@Model.User.Username</b></p>
+                    <a href="~/logout">Log out</a>
+                </div>
             }
             else
             {
-                <p>You are not logged in :( Try <i>admin</i> or <i>user</i> (both with password "<i>password</i>")</p>
-                <form id="loginForm">
-                    <p><label>Username <input type="text" name="Username" id="Username" /></label></p>
-                    <p><label>Password <input type="text" name="Password" id="Password" /></label></p>
-                    <input id="btnLogIn" type="submit" value="Log in" />
-                    <p id="StatusText">test test bklah balh</p>
-                </form>                
+                <p>You are not logged in :( Try <i>admin</i> or <i>user</i> (both with "<i>password</i>" as the password)</p>
+                <div id="demoBox">
+                    <form id="loginForm">
+                        <h3>Log in</h3>
+                        <p><label>Username <input type="text" name="Username" id="Username" /></label></p>
+                        <p><label>Password <input type="text" name="Password" id="Password" /></label></p>
+                        <p id="StatusText">&nbsp;</p>
+                        <input id="btnLogIn" type="submit" value="Log in" />
+                    </form>
+                </div>
             }
 
             <h2>Readme</h2>
@@ -73,18 +78,36 @@
             </p>
 
             <p>In short, from a NancyModule use:</p>
-            <pre><code>    this.LoginWithoutRedirect(guid).Cookies[0].Value</code></pre>
+            <pre><code>this.LoginWithoutRedirect(guid).Cookies[0].Value</code></pre>
             <p>to get the encrypted authentication token, then on the client use</p>
-            <pre><code>    $.cookie('_ncfa', authToken)</code></pre>
+            <pre><code>$.cookie('_ncfa', authToken)</code></pre>
             <p>to store that token so that future requests will recognise the authenticated user.</p>
+
+            <h2>Disclaimer</h2>
+            <p>
+                This demo is intentionally very narrow in scope and is not intended to demonstrate best practices of
+                any kind.
+            </p>
+            <p>That said, feel free to pass along your "doing it wrong" and "stfu n00b" feedback:</p>            
+            
+            <a href="https://twitter.com/intent/tweet?screen_name=nathanchere&text=Your%20code%20sucks!" data-size="large"
+               class="twitter-mention-button" data-related="nathanchere">Tweet to @@nathanchere</a>
+            <a href="https://twitter.com/nathanchere" class="twitter-follow-button" data-size="large"
+               data-show-count="false">Follow @@nathanchere</a>            
+
+            <p>
+                Better yet, feel free to <a href="https://github.com/ferretallica/Nancy.Demo.FormsAuthentication.Ajax/fork">fork the demo project</a>
+                and demonstrate how it can be done better.
+            </p>
         </div>
     </div>
 
     <script src="~/content/scripts/jquery.min.js"></script>
     <script src="~/content/scripts/jquery.cookie.js"></script>
     <script src="~/content/scripts/highlight.min.js"></script>
-    <script src="~/content/scripts/bootstrap.js"></script>
-
+    <script src="~/content/scripts/bootstrap.js"></script>    
     <script src="~/content/scripts/authdemo.js"></script>
+    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>    
 </body>
+
 </html>

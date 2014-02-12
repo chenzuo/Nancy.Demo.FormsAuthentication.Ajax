@@ -32,7 +32,7 @@ namespace Nancy.Demo.Modules
                 if(guid.HasValue) {
                     var authResponse = this.LoginWithoutRedirect(guid.Value);
                     result.IsSuccess = true;
-                    result.Message = "Login successful for " + input.Username + "!";
+                    result.Message = "Login successful for " + input.Username + "! Now reload the page or try viewing the secure page.";
                     result.AuthToken = authResponse.Cookies[0].Value;
                 }                
                 
