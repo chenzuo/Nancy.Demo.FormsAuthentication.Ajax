@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Nancy.Demo.FormsAuthentication.Ajax")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2013 Nathan Chere")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
