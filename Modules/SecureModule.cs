@@ -1,8 +1,7 @@
-using Nancy;
-using Nancy.Demo.Authentication.Forms.Ajax.Models;
+using Nancy.Demo.Models;
 using Nancy.Security;
 
-namespace Nancy.Demo.Authentication.Forms.Ajax
+namespace Nancy.Demo.Modules
 {    
     public class SecureModule : NancyModule
     {

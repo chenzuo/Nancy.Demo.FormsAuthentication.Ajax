@@ -1,0 +1,25 @@
+#loginForm{
+	border: 1px solid #ccc;
+    
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+   
+  -moz-box-shadow: 2px 2px 3px #666;
+  -webkit-box-shadow: 2px 2px 3px #666;
+  box-shadow: 2px 2px 3px #666;
+  
+  margin:20px auto;
+  padding:30px;
+  
+  width:400px;
+}
+
+#loginForm input{
+	width:300px;
+}
+
+#loginForm #btnLogIn{
+	width:400px;
+	height:40px;
+}

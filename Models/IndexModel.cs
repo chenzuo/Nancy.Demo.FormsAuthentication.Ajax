@@ -1,4 +1,4 @@
-﻿namespace Nancy.Demo.Authentication.Forms.Ajax.Models
+﻿namespace Nancy.Demo.Models
 {
     public class IndexModel {
         public bool IsLoggedIn { get; set; }

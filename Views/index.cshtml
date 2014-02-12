@@ -5,65 +5,86 @@
     <meta charset="utf-8" />
     <title>Nancy.Demo.FormsAuthentication.Ajax</title>
 
-	<style type="text/css">
-
-		body {
-			text-align: center;
-		}
-
-	</style>
-
+    <link href="~/content/bootstrap.css" rel="Stylesheet" />
+    <link href="~/content/default.min.css" rel="Stylesheet" />
+    <link href="//yandex.st/highlightjs/7.3/styles/default.min.css" rel="stylesheet">
+    <link href="//simonwhitaker.github.com/github-fork-ribbon-css/gh-fork-ribbon.css" rel="stylesheet">
+    <link href="~/content/authdemo.css" rel="Stylesheet" />
 </head>
-<body>
-    <img src="~/Content/nancy-logo.png" alt="Nancy logo" /><br />
+<body class="home-discover">
 
-    @if (Model.IsLoggedIn)
-    {
-        <p>You are logged in as <b>@Model.User.Username</b></p>
-        <p><a href="~/logout">Log out</a></p>
-    }
-    else
-    {
-        <p>You are not logged in :( Try <i>admin</i> or <i>user</i> (both with password "<i>password</i>")</p>
-        <h3>Login</h3>
-        <form id="loginForm">
-            <p><label>Username <input type="text" name="Username" id="Username" /></label></p>
-            <p><label>Password <input type="text" name="Password" id="Password" /></label></p>
-            <input type="submit" value="Log in" />
-        </form>
-        <p id="StatusText"></p>
-    }
-
-    <hr />
-    <h3>Links</h3>
-    <p><a href="#" onclick="window.location.reload();return false;">Reload this page</a></p>
-    <p><a href="~/secure">Try to view a secure page</a></p>
-
-    <hr />
-
-    <div class="hero-unit">
-        <h3>Readme</h3>
-        <p>
-            This demo is intended to supplement the official Nancy FormsAuthentication documentation
-            which assumes that the result of Login() and its variants will be returned to the client
-            as-is. This is not ideal in a scenario where you want to use an AJAX call to handle
-            authentication instead of a normal form submit (e.g. "SPA" sites).
-        </p>
-        <p>
-            The crux of this demo lies is the Javascript in "~/Views/index.cshtml" which uses the jQuery
-            cookies plugin to set the "_ncfa" cookie which Nancy uses for managing sessions. This cookie should
-            contain an encoded and encrypted GUID representing the currently logged in user for the authenticated
-            session to be valid.
-        </p>
-
-        <p>In short, from a NancyModule use:</p>
-        <pre><code>    this.LoginWithoutRedirect(guid).Cookies[0].Value</code></pre>
-        <p>to get the encrypted authentication token, then on the client use</p>
-        <pre><code>    $.cookie('_ncfa', authToken)</code></pre>
-        <p>to store that token so that future requests will recognise the authenticated user.</p>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="containerx">
+                <a class="brand" href="/">Nancy.Demo.FormsAuthentication.Ajax</a>
+                <ul class="nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#" onclick="window.location.reload();return false;">Reload this page</a></li>
+                    <li><a href="~/secure">Try a secure page</a></li>
+                </ul>
+                <div class="pull-right">
+                    <ul class="nav">
+                        @if (Model.IsLoggedIn)
+                        {
+                            <li><a href="~/logout">Log out</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="#">Not logged in</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.js"></script>
+    <div class="containerx bulk">
+
+        <div class="hero-unit">
+            <h2>Demo</h2>
+            @if (Model.IsLoggedIn)
+            {
+                <p>You are logged in as <b>@Model.User.Username</b></p>
+                
+            }
+            else
+            {
+                <p>You are not logged in :( Try <i>admin</i> or <i>user</i> (both with password "<i>password</i>")</p>
+                <form id="loginForm">
+                    <p><label>Username <input type="text" name="Username" id="Username" /></label></p>
+                    <p><label>Password <input type="text" name="Password" id="Password" /></label></p>
+                    <input id="btnLogIn" type="submit" value="Log in" />
+                </form>
+                <p id="StatusText"></p>
+            }
+
+            <h2>Readme</h2>
+            <p>
+                This demo is intended to supplement the official Nancy FormsAuthentication documentation
+                which assumes that the result of Login() and its variants will be returned to the client
+                as-is. This is not ideal in a scenario where you want to use an AJAX call to handle
+                authentication instead of a normal form submit (e.g. "SPA" sites).
+            </p>
+            <p>
+                The crux of this demo lies is the Javascript in "~/Views/index.cshtml" which uses the jQuery
+                cookies plugin to set the "_ncfa" cookie which Nancy uses for managing sessions. This cookie should
+                contain an encoded and encrypted GUID representing the currently logged in user for the authenticated
+                session to be valid.
+            </p>
+
+            <p>In short, from a NancyModule use:</p>
+            <pre><code>    this.LoginWithoutRedirect(guid).Cookies[0].Value</code></pre>
+            <p>to get the encrypted authentication token, then on the client use</p>
+            <pre><code>    $.cookie('_ncfa', authToken)</code></pre>
+            <p>to store that token so that future requests will recognise the authenticated user.</p>
+        </div>
+    </div>
+
+    <script src="~/content/scripts/jquery.min.js"></script>
+    <script src="~/content/scripts/jquery.cookie.js"></script>
+    <script src="~/content/scripts/highlight.min.js"></script>
+    <script src="~/content/scripts/bootstrap.js"></script>
+
+    <script src="~/content/scripts/authdemo.js"></script>
 </body>
 </html>

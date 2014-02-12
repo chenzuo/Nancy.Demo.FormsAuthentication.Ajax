@@ -1,13 +1,13 @@
-using Nancy.ModelBinding;
 using Nancy.Authentication.Forms;
-using Nancy.Demo.Authentication.Forms.Ajax.Models;
+using Nancy.Demo.Models;
+using Nancy.ModelBinding;
 
-namespace Nancy.Demo.Authentication.Forms.Ajax
-{    
+namespace Nancy.Demo.Modules
+{
 
-    public class MainModule : NancyModule
+    public class IndexModule : NancyModule
     {
-        public MainModule()
+        public IndexModule()
         {
             Get["/"] = x =>
             {
@@ -21,7 +21,8 @@ namespace Nancy.Demo.Authentication.Forms.Ajax
                 return this.View["index",model];
             };
             
-            Post["/login"] = x => {                
+            Post["/login"] = x =>
+            {                
                 var input = this.Bind<LoginRequestModel>();
                 var guid = UserDatabase.ValidateUser((string)this.Request.Form.Username, (string)this.Request.Form.Password);
 
@@ -35,7 +36,7 @@ namespace Nancy.Demo.Authentication.Forms.Ajax
                     result.AuthToken = authResponse.Cookies[0].Value;
                 }                
                 
-                return response;                
+                return response;
             };
 
             this.Get["/logout"] = x => this.LogoutAndRedirect("~/");
