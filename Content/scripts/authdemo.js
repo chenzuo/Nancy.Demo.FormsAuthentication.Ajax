@@ -10,10 +10,10 @@ function tryLogon(event) {
         data: { UserName: username, Password: password }
     })
     .done(function (response) {
-        if (response.IsSuccess) {
-            $.cookie('_ncfa', response.AuthToken);
+        if (response.isSuccess) {
+            $.cookie('_ncfa', response.authToken);
         }
-        $('#StatusText').text(response.Message);
+        $('#StatusText').text(response.message);
     })
     .fail(function (msg) { $('#StatusText').text('Error: ' + msg.statusText); });
 };
