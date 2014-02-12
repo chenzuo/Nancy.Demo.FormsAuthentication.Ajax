@@ -15,9 +15,54 @@
 
 </head>
 <body>
-	<img src="~/Content/nancy-logo.png" alt="Nancy logo" /><br />
-	This view was rendered using the Nancy Razor view engine
-    
+    <img src="~/Content/nancy-logo.png" alt="Nancy logo" /><br />
+
+    @if (Model.IsLoggedIn)
+    {
+        <p>You are logged in as <b>@Model.User.Username</b></p>
+        <p><a href="~/logout">Log out</a></p>
+    }
+    else
+    {
+        <p>You are not logged in :( Try <i>admin</i> or <i>user</i> (both with password "<i>password</i>")</p>
+        <h3>Login</h3>
+        <form id="loginForm">
+            <p><label>Username <input type="text" name="Username" id="Username" /></label></p>
+            <p><label>Password <input type="text" name="Password" id="Password" /></label></p>
+            <input type="submit" value="Log in" />
+        </form>
+        <p id="StatusText"></p>
+    }
+
+    <hr />
+    <h3>Links</h3>
+    <p><a href="#" onclick="window.location.reload();return false;">Reload this page</a></p>
+    <p><a href="~/secure">Try to view a secure page</a></p>
+
+    <hr />
+
+    <div class="hero-unit">
+        <h3>Readme</h3>
+        <p>
+            This demo is intended to supplement the official Nancy FormsAuthentication documentation
+            which assumes that the result of Login() and its variants will be returned to the client
+            as-is. This is not ideal in a scenario where you want to use an AJAX call to handle
+            authentication instead of a normal form submit (e.g. "SPA" sites).
+        </p>
+        <p>
+            The crux of this demo lies is the Javascript in "~/Views/index.cshtml" which uses the jQuery
+            cookies plugin to set the "_ncfa" cookie which Nancy uses for managing sessions. This cookie should
+            contain an encoded and encrypted GUID representing the currently logged in user for the authenticated
+            session to be valid.
+        </p>
+
+        <p>In short, from a NancyModule use:</p>
+        <pre><code>    this.LoginWithoutRedirect(guid).Cookies[0].Value</code></pre>
+        <p>to get the encrypted authentication token, then on the client use</p>
+        <pre><code>    $.cookie('_ncfa', authToken)</code></pre>
+        <p>to store that token so that future requests will recognise the authenticated user.</p>
+    </div>
+
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.3.1/jquery.cookie.js"></script>
 </body>
