@@ -35,7 +35,7 @@ That said, feel free to pass along your "doing it wrong" and "stfu n00b" feedbac
 
 [Follow @nathanchere](https://twitter.com/nathanchere)            
 
-Better yet, feel free to [fork the demo project](https://github.com/ferretallica/Nancy.Demo.FormsAuthentication.Ajax/fork)
+Better yet, feel free to [fork the demo project](https://github.com/nathanchere/Nancy.Demo.FormsAuthentication.Ajax/fork)
 and demonstrate how it can be done better.
 
 [![Build status](https://ci.appveyor.com/api/projects/status?id=6shtlnnwqnnivl0p)](https://ci.appveyor.com/project/nancy-demo-formsauthentication-ajax)
